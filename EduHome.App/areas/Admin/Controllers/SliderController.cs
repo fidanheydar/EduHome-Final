@@ -75,7 +75,7 @@ namespace EduHome.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, Slider slider)
         {
-            Slider? Updateslider = await _context.Slides
+            Slider? updateSlider = await _context.Slides
        .Where(x => !x.IsDeleted && x.Id == id)
        .FirstOrDefaultAsync();
 
@@ -86,10 +86,8 @@ namespace EduHome.App.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(Updateslider);
+                return View(updateSlider);
             }
-
-
             if (slider.FormFile != null)
             {
                 if (!Helper.IsImage(slider.FormFile))
@@ -103,15 +101,15 @@ namespace EduHome.App.Controllers
                     return View();
                 }
 
-                Updateslider.Image = slider.FormFile
+                updateSlider.Image = slider.FormFile
                     .CreateImage(_env.WebRootPath, "assets/img");
             }
 
             //Helper.RemoveImage(_env.WebRootPath,"assets/images",blog.Image);
 
-            Updateslider.Description = slider.Description;
-            Updateslider.Title = slider.Title;
-            Updateslider.CreatedDate = DateTime.Now;
+            updateSlider.Description = slider.Description;
+            updateSlider.Title = slider.Title;
+            updateSlider.CreatedDate = DateTime.Now;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

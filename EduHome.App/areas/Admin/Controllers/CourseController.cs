@@ -1,5 +1,6 @@
 ﻿using EduHome.App.Context;
 using EduHome.App.Extensions;
+using EduHome.App.Helpers;
 using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,12 +39,22 @@ namespace EduHome.App.Areas.Admin.Controllers
             {
                 return View();
             }
-            if (!course.FormFile.ContentType.Contains("image")) 
+            if (course.FormFile == null)
             {
-                ModelState.AddModelError("FormFile", "Select correctly !"); 
+                ModelState.AddModelError("FormFile", "The field image is required");
+                return View();
+            }
+            if (!Helper.IsImage(course.FormFile))
+            {
+                ModelState.AddModelError("FormFile", "File type is not correct !");
+                return View();
+            }
+            if (!Helper.IsSizeOk(course.FormFile, 1))
+            {
+                ModelState.AddModelError("FormFile", "File size can not be over 1 mb!");
+                return View();
             }
             course.Image = course.FormFile.CreateImage(_env.WebRootPath, "assets/img/");
-
             course.CreatedDate = DateTime.Now;
             await _dbContext.Courses.AddAsync(course);
             await _dbContext.SaveChangesAsync();
@@ -64,19 +75,37 @@ namespace EduHome.App.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Course course, int id)
         {
-            if (!ModelState.IsValid) return View(course);
-            var existCourse = await _dbContext.Courses.FindAsync(id);
-            if (existCourse == null)
+            Course? updateCourse = _dbContext.Courses
+                 .Where(x => !x.IsDeleted && x.Id == id)
+                 .FirstOrDefault();
+            if (course == null)
             {
                 return NotFound();
             }
+
+            if (!ModelState.IsValid)
+            {
+                return View(updateCourse);
+            }
+
             if (course.FormFile != null)
             {
-                existCourse.Image = course.FormFile
-                        .CreateImage(_env.WebRootPath, "assets/img/");
+                if (!Helper.IsImage(course.FormFile))
+                {
+                    ModelState.AddModelError("FormFile", "File type is not correct !");
+                    return View();
+                }
+                if (!Helper.IsSizeOk(course.FormFile, 1))
+                {
+                    ModelState.AddModelError("FormFile", "File size can not be over 1 mb!");
+                    return View();
+                }
+
+                updateCourse.Image = course.FormFile
+                    .CreateImage(_env.WebRootPath, "assets/img");
             }
-            existCourse.Name = course.Name;
-            existCourse.Description = course.Description;
+            updateCourse.Name = course.Name;
+            updateCourse.Description = course.Description;
             course.UpdatedDate = DateTime.Now;
             await _dbContext.SaveChangesAsync();
 

@@ -71,21 +71,39 @@ namespace EduHome.App.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(WelcomeEdu updatedWelcomeEdu,int id )
+        public async Task<IActionResult> Update(WelcomeEdu welcomeEdu,int id )
         {
+
+            WelcomeEdu updatedWelcomeEdu = await _context.WelcomeEdus.FindAsync(id);
+            if (welcomeEdu == null)
+            {
+                return NotFound();
+            }
             if (!ModelState.IsValid)
             {
                 return View(updatedWelcomeEdu);
             }
-            WelcomeEdu existWelcomeEdu = await _context.WelcomeEdus.FindAsync(id);
-            if (existWelcomeEdu == null)
+            if (welcomeEdu.FormFile != null)
             {
-                return NotFound();
+                if (!Helper.IsImage(welcomeEdu.FormFile))
+                {
+                    ModelState.AddModelError("FormFile", "File type is not correct !");
+                    return View();
+                }
+                if (!Helper.IsSizeOk(welcomeEdu.FormFile, 1))
+                {
+                    ModelState.AddModelError("FormFile", "File size can not be over 1 mb!");
+                    return View();
+                }
+
+                updatedWelcomeEdu.Image = welcomeEdu.FormFile
+                    .CreateImage(_env.WebRootPath, "assets/img");
             }
+
             updatedWelcomeEdu.UpdatedDate = DateTime.Now;
-            existWelcomeEdu.Description = updatedWelcomeEdu.Description;
-            existWelcomeEdu.Title = updatedWelcomeEdu.Title;
-            existWelcomeEdu.Link= updatedWelcomeEdu.Link;
+            updatedWelcomeEdu.Description = welcomeEdu.Description;
+            updatedWelcomeEdu.Title = welcomeEdu.Title;
+            updatedWelcomeEdu.Link= welcomeEdu.Link;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
