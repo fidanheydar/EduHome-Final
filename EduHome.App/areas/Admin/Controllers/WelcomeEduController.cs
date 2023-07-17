@@ -4,6 +4,7 @@ using EduHome.App.Helpers;
 using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace EduHome.App.Areas.Admin.Controllers
 {
@@ -30,7 +31,7 @@ namespace EduHome.App.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async IActionResult Create(WelcomeEdu welcomeEdu)
+        public async  Task<IActionResult> Create(WelcomeEdu? welcomeEdu)
         {
             if (!ModelState.IsValid)
             {
@@ -56,6 +57,44 @@ namespace EduHome.App.Areas.Admin.Controllers
             welcomeEdu.CreatedDate = DateTime.Now;
             await _context.AddAsync(welcomeEdu);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            WelcomeEdu? welcomeEdu= _context .WelcomeEdus.Where(x => !x.IsDeleted && x.Id == id).FirstOrDefault();
+            if (welcomeEdu == null)
+            {
+                return NotFound();
+            }
+            return View(welcomeEdu);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(WelcomeEdu updatedWelcomeEdu,int id )
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(updatedWelcomeEdu);
+            }
+            WelcomeEdu existWelcomeEdu = await _context.WelcomeEdus.FindAsync(id);
+            if (existWelcomeEdu == null)
+            {
+                return NotFound();
+            }
+            updatedWelcomeEdu.UpdatedDate = DateTime.Now;
+            existWelcomeEdu.Description = updatedWelcomeEdu.Description;
+            existWelcomeEdu.Title = updatedWelcomeEdu.Title;
+            existWelcomeEdu.Link= updatedWelcomeEdu.Link;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            WelcomeEdu? welcomeEdu = await _context.WelcomeEdus.FindAsync(id);
+            welcomeEdu.IsDeleted = true;
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
     }

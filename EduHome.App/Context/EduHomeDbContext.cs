@@ -9,6 +9,7 @@ namespace EduHome.App.Context
         public DbSet<Notice> Notices { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<WelcomeEdu> WelcomeEdus { get; set; }
+        public DbSet<Person> People { get; set; }
         public EduHomeDbContext(DbContextOptions<EduHomeDbContext> options):base(options)
         {
             

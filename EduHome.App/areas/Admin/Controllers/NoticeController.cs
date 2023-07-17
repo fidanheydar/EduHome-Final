@@ -68,8 +68,11 @@ namespace EduHome.App.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            if (!ModelState.IsValid) return View(updatedNotice);
-            var existNotice = await _dbContext.Notices.FindAsync(id);
+            if (!ModelState.IsValid)
+            {
+                return  View(updatedNotice);
+            }
+            Notice existNotice = await _dbContext.Notices.FindAsync(id);
             if (existNotice == null)
             {
                 return NotFound();

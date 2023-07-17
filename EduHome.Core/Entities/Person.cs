@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace EduHome.Core.Entities
 {
-    public  class WelcomeEdu:BaseModel
+    public  class Person:BaseModel 
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Link { get; set; }
         public string? Image { get; set; }
+        public string? Description { get; set; }
+        public string? Name { get; set; }
+        public string? Position { get; set; }
         [NotMapped]
         public IFormFile? FormFile { get; set; }
+
     }
 }

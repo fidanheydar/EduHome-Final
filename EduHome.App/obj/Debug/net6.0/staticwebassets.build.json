@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UvqiHl5FDunVW5rosgiQhMniF8J9tU55Fl8eIq+MoIY=",
+  "Hash": "NC4rMTxjlnZD06kbEccjWV/fl+s3OLgaTkORK9czqso=",
   "Source": "EduHome.App",
   "BasePath": "_content/EduHome.App",
   "Mode": "Default",
@@ -2516,6 +2516,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\5030dac1-056d-4ec1-be8c-78f491b9039bPhoto.png"
     },
     {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\5af2e0ed-c8d2-4ab8-b775-1d65f69b42e5pexels-katie-burandt-1212693.jpg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/5af2e0ed-c8d2-4ab8-b775-1d65f69b42e5pexels-katie-burandt-1212693.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\5af2e0ed-c8d2-4ab8-b775-1d65f69b42e5pexels-katie-burandt-1212693.jpg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\5c9cc4db-3497-4d1d-9c85-0a813a718d31Icon.png",
       "SourceId": "EduHome.App",
       "SourceType": "Discovered",
@@ -3415,6 +3432,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\event\\speaker2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\f29a6038-f4d5-4335-9a2d-0bb1e1404f7dpexels-katie-burandt-1212693.jpg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/f29a6038-f4d5-4335-9a2d-0bb1e1404f7dpexels-katie-burandt-1212693.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\f29a6038-f4d5-4335-9a2d-0bb1e1404f7dpexels-katie-burandt-1212693.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\f4f39a29-026c-4d4b-a95c-9b54b89be8f8Icon.png",
