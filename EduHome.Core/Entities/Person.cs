@@ -11,8 +11,8 @@ namespace EduHome.Core.Entities
     public  class Person:BaseModel 
     {
         public string? Image { get; set; }
-        public string? Description { get; set; }
-        public string? Name { get; set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
         public string? Position { get; set; }
         [NotMapped]
         public IFormFile? FormFile { get; set; }

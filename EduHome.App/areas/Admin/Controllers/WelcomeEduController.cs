@@ -74,7 +74,9 @@ namespace EduHome.App.Areas.Admin.Controllers
         public async Task<IActionResult> Update(WelcomeEdu welcomeEdu,int id )
         {
 
-            WelcomeEdu updatedWelcomeEdu = await _context.WelcomeEdus.FindAsync(id);
+            WelcomeEdu? updatedWelcomeEdu = await _context.WelcomeEdus
+       .Where(x => !x.IsDeleted && x.Id == id)
+       .FirstOrDefaultAsync();
             if (welcomeEdu == null)
             {
                 return NotFound();

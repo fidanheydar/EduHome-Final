@@ -57,7 +57,7 @@ namespace EduHome.App.areas.Admin.Controllers
             person.CreatedDate = DateTime.Now;
             await _dbContext.People.AddAsync(person);
             await _dbContext.SaveChangesAsync();
-            return RedirectToAction("index", "course");
+            return RedirectToAction("index", "person");
         }
         [HttpGet]
         public async Task<IActionResult> Update(int id)
@@ -73,22 +73,40 @@ namespace EduHome.App.areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Person updatedPerson,int id)
+        public async Task<IActionResult> Update(Person person,int id)
         {
+            Person ? updatedPerson = await _dbContext.People
+           .Where(x => !x.IsDeleted && x.Id == id)
+           .FirstOrDefaultAsync();
+            if (updatedPerson == null)
+            {
+                return NotFound();
+            }
             if (!ModelState.IsValid)
             {
                 return View(updatedPerson);
             }
-            Person existPerson = await _dbContext.People.FindAsync(id);
 
-            if (existPerson == null)
+            if (person.FormFile != null)
             {
-                return NotFound();
+                if (!Helper.IsImage(person.FormFile))
+                {
+                    ModelState.AddModelError("FormFile", "File type is not correct !");
+                    return View();
+                }
+                if (!Helper.IsSizeOk(person.FormFile, 1))
+                {
+                    ModelState.AddModelError("FormFile", "File size can not be over 1 mb!");
+                    return View();
+                }
+
+                updatedPerson.Image = person.FormFile
+                    .CreateImage(_env.WebRootPath, "assets/img");
             }
             updatedPerson.UpdatedDate = DateTime.Now;
-            existPerson.Description = updatedPerson.Description;
-            existPerson.Name = updatedPerson.Name;
-           
+            updatedPerson.Description = person.Description;
+            updatedPerson.Name = person.Name;
+            updatedPerson.Position = person.Position;
             await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

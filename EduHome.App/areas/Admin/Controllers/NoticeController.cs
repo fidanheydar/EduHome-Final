@@ -41,7 +41,9 @@ namespace EduHome.App.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            Notice? notice = await _dbContext.Notices.FindAsync(id);
+            Notice? notice = await _dbContext.Notices
+       .Where(x => !x.IsDeleted && x.Id == id)
+       .FirstOrDefaultAsync();
             notice.IsDeleted = true;
             _dbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
