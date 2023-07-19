@@ -33,7 +33,7 @@ namespace EduHome.Core.Entities
         public TeacherPosition?  TeacherPosition { get; set; }
         public int? DegreeId { get; set; }
         public TeacherDegree ? TeacherDegree { get; set; }
-        public List<TeacherSkill> ?TeacherSkills { get; set; }
+        public List<TeacherSkill> ? TeacherSkills { get; set; }
         public List <TeacherSocial> ?TeacherSocials { get; set; }
         public List<TeacherHobby>? TeacherHobbies { get; set; }
         [NotMapped]

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ssKgET+8jsnwkbcBMS/5Uj9y1EX2TEd+bZP+Zc222BA=",
+  "Hash": "TUP8jZvzJi6okEklUwL02MB/p4B1r1IwqvijIOPKdmw=",
   "Source": "EduHome.App",
   "BasePath": "_content/EduHome.App",
   "Mode": "Default",
@@ -2667,6 +2667,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\5c9cc4db-3497-4d1d-9c85-0a813a718d31Icon.png"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\5df44fb1-0bba-448c-8f2a-ed7e6e15cc09img1.jpeg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/5df44fb1-0bba-448c-8f2a-ed7e6e15cc09img1.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\5df44fb1-0bba-448c-8f2a-ed7e6e15cc09img1.jpeg"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\6580a6d0-c98a-4ff7-8eba-838d0d612b54pexels-eberhard-grossgasteiger-443446.jpg",

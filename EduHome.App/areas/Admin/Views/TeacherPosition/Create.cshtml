@@ -1,0 +1,12 @@
+﻿@model TeacherPosition
+<div class="container">
+    <form enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+             <input type="text" class="form-control"  asp-for="@Model.Name">
+            <span class="text text-danger" asp-validation-for="@Model.Name"></span>
+            @Html.AntiForgeryToken()
+        </div>
+        <button style="background-color:deeppink" type="submit">Create</button>
+    </form>
+</div>

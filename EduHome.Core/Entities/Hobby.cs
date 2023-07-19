@@ -9,7 +9,6 @@ namespace EduHome.Core.Entities
 {
     public class Hobby:BaseModel
     {
-        [Required]
         public string? Name { get; set; }
         public List<TeacherHobby>? TeacherHobbies { get; set; }
        

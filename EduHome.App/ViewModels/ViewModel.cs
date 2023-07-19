@@ -6,7 +6,6 @@ namespace EduHome.App.ViewModels
     {
         public ICollection<Slider>? sliders { get; set; }
         public ICollection<Notice>? notices { get; set; }
-        public ICollection<Course>? courses { get; set; }
 
         
     }

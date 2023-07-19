@@ -19,7 +19,6 @@ namespace EduHome.App.Controllers
             var model = new ViewModel();
             model.notices = _eduHomeDbContext.Notices.Where(x => !x.IsDeleted).ToList();
            model.sliders = _eduHomeDbContext.Slides.Where(x => !x.IsDeleted).ToList();
-           model.courses = _eduHomeDbContext.Courses.Where(x => !x.IsDeleted).ToList();
             
             return View(model);
         }

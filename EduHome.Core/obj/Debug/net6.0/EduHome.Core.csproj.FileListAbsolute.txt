@@ -1,4 +1,5 @@
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\bin\Debug\net6.0\EduHome.Core.deps.json
+C:\Users\HP\source\repos\EduHome.App\EduHome.Core\bin\Debug\net6.0\EduHome.Core.runtimeconfig.json
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\bin\Debug\net6.0\EduHome.Core.dll
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\bin\Debug\net6.0\EduHome.Core.pdb
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\EduHome.Core.csproj.AssemblyReference.cache
@@ -9,6 +10,5 @@ C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\EduHome.Core.
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\EduHome.Core.dll
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\refint\EduHome.Core.dll
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\EduHome.Core.pdb
-C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\ref\EduHome.Core.dll
-C:\Users\HP\source\repos\EduHome.App\EduHome.Core\bin\Debug\net6.0\EduHome.Core.runtimeconfig.json
 C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\EduHome.Core.genruntimeconfig.cache
+C:\Users\HP\source\repos\EduHome.App\EduHome.Core\obj\Debug\net6.0\ref\EduHome.Core.dll

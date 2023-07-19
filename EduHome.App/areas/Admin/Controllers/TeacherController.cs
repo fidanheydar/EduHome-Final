@@ -33,7 +33,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherHobbies = await _dbContext.TeacherHobbies.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Hobb = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
             return View();
         }
         [HttpPost]
@@ -42,7 +42,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherHobbies = await _dbContext.TeacherHobbies.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Hobby= await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
             if (!ModelState.IsValid)
             {
                 return View();
@@ -73,7 +73,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 {
                     CreatedDate = DateTime.Now,
                     Teacher = teacher,
-                    HobbyId = item
+                    HobbyId = item,
                 };
                 await _dbContext.TeacherHobbies.AddAsync(teacherHobby);
             }
@@ -88,7 +88,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherHobby = await _dbContext.TeacherHobbies.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Hobby = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
             Teacher? teacher = await _dbContext.Teachers
                .Where(x => !x.IsDeleted && x.Id == id)
                 .Include(x => x.TeacherDegree)
@@ -108,7 +108,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherHobby = await _dbContext.TeacherHobbies.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Hobby = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
 
 
         Teacher? updatedTeacher = await _dbContext.Teachers

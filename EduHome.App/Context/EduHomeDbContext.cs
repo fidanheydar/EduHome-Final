@@ -7,7 +7,6 @@ namespace EduHome.App.Context
     {
         public DbSet<Slider> Slides { get; set; }
         public DbSet<Notice> Notices { get; set; }
-        public DbSet<Course> Courses { get; set; }
         public DbSet<WelcomeEdu> WelcomeEdus { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
