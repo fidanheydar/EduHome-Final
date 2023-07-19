@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xyoHEt8vGFB2FC3EyeoUh9HAamxt3/iEbVWW4km+gic=",
+  "Hash": "ssKgET+8jsnwkbcBMS/5Uj9y1EX2TEd+bZP+Zc222BA=",
   "Source": "EduHome.App",
   "BasePath": "_content/EduHome.App",
   "Mode": "Default",
@@ -2618,6 +2618,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\5030dac1-056d-4ec1-be8c-78f491b9039bPhoto.png"
     },
     {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\5aa09251-ff78-44b3-8c9c-ba16ea699d10img1.jpeg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/5aa09251-ff78-44b3-8c9c-ba16ea699d10img1.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\5aa09251-ff78-44b3-8c9c-ba16ea699d10img1.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\5af2e0ed-c8d2-4ab8-b775-1d65f69b42e5pexels-katie-burandt-1212693.jpg",
       "SourceId": "EduHome.App",
       "SourceType": "Discovered",
@@ -3364,6 +3381,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\da7b43c2-a3c3-4204-8684-3aeac0f83071images.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\e0249b82-d98d-4010-94c5-bfac792d6412img2.jpeg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/e0249b82-d98d-4010-94c5-bfac792d6412img2.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\e0249b82-d98d-4010-94c5-bfac792d6412img2.jpeg"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\e3175d3d-03a3-4fbe-b42e-28f8ddb62289images.jpeg",

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Teacher>
+<div class="container">
+    <table class="table table-lg">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Degree</th>
+                <th scope="col">Image</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                     <th scope="row">@item.Id</th>
+                     <th>@item.FullName</th>
+                    <th>@item.TeacherPosition.Name</th>
+                    <a href="c:\users\hp\source\repos\eduhome.app\eduhome.app\areas\admin\views\teacher\index.cshtml">c:\users\hp\source\repos\eduhome.app\eduhome.app\areas\admin\views\teacher\index.cshtml</a>
+                     <th>@item.TeacherDegree.Name</th>
+                     <th><img style="width:100px;height:100px" src="~/img/teacher/@item.Image" /></th>
+                    <th><img style="width:70px;height:70px;object-fit:cover;" src="~/img/slider/@item.Image" /></th>
+                    <td><a asp-controller="teacher" asp-action="update" asp-route-id="@item.Id"><i class="fas fa-edit text text-primary"></i></a></td>
+                    <td><a onclick="if (!confirm('Delete selected item?')){return false;}" asp-controller="teacher" asp-action="Delete" asp-route-id="@item.Id" class=" delete-item"><i class="fas fa-trash text text-danger"></i></a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div>
+        <a asp-controller="teacher" asp-action="create" style="display: block; text-decoration: none; color: white; width: 100%; height: 100%"> <div style="width:100%; " class="btn btn-outline-success">Create Teacher </div></a>
+    </div>
+
+</div>
