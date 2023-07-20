@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EduHome.App.areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TeacherPositionController : Controller
+    public class TeacherPositionController :Controller
     {
         private readonly EduHomeDbContext _context;
         public TeacherPositionController(EduHomeDbContext context)

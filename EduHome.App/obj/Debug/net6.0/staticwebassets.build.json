@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TUP8jZvzJi6okEklUwL02MB/p4B1r1IwqvijIOPKdmw=",
+  "Hash": "SFoXVI6BAbRh6xjACUwpNV5ho37nGjYfVFneq/J0Yvk=",
   "Source": "EduHome.App",
   "BasePath": "_content/EduHome.App",
   "Mode": "Default",
@@ -2822,6 +2822,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\about\\about.png"
     },
     {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\ac915199-aba7-47a3-8d16-259732e0f4d3img1.jpeg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/ac915199-aba7-47a3-8d16-259732e0f4d3img1.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\ac915199-aba7-47a3-8d16-259732e0f4d3img1.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\b2692620-a124-42fc-befb-2389e1ba1ee9pexels-katie-burandt-1212693.jpg",
       "SourceId": "EduHome.App",
       "SourceType": "Discovered",
@@ -3432,6 +3449,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\e3175d3d-03a3-4fbe-b42e-28f8ddb62289images.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\ef338f02-759e-4ef1-8c48-fbcd05eb827bimg1.jpeg",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/ef338f02-759e-4ef1-8c48-fbcd05eb827bimg1.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\ef338f02-759e-4ef1-8c48-fbcd05eb827bimg1.jpeg"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\EduHome.App\\EduHome.App\\wwwroot\\assets\\img\\event\\event1.jpg",

@@ -16,6 +16,16 @@ namespace EduHome.App.Context
         public DbSet<TeacherSkill> TeacherSkills { get; set; }
         public DbSet<TeacherSocial> TeacherSocials { get; set; }
         public DbSet<Hobby> Hobbies { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<CourseTag> CourseTags { get; set; }
+        public DbSet<CLanguage> CLanguages { get; set; }
+        public DbSet<CAssets> CAssets { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<BlogTag> BlogTags { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public EduHomeDbContext(DbContextOptions<EduHomeDbContext> options):base(options)
         {
             
