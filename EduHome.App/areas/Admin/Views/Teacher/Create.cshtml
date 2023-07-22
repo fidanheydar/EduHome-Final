@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="ExperienceYear">ExperienceYear</label>
+            <label asp-for="ExperienceYear">Experience Year</label>
             <input type="text" class="form-control" asp-for="@Model.ExperienceYear">
             <span class="text text-danger" asp-validation-for="@Model.ExperienceYear"></span>
             @Html.AntiForgeryToken()
@@ -82,6 +82,6 @@
             </select>
             <span asp-validation-for="HobbyIds" class="text text-danger"></span>
         </div>
-        <button style="background-color:pink" type="submit">Create</button>
+        <button style=" background-color:pink"  type="submit">Create</button>
     </form>
 </div>

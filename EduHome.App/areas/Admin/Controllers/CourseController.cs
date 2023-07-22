@@ -18,7 +18,7 @@ namespace EduHome.App.areas.Admin.Controllers
             _context = context;
             _env = env;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()//bdenede bele yoxla onda  heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyb
         {
             IEnumerable<Course> courses = await _context.Courses.Where(x => !x.IsDeleted)
                 .Include(x => x.CLanguage)
@@ -89,12 +89,12 @@ namespace EduHome.App.areas.Admin.Controllers
                 CourseTag courseTag = new CourseTag
                 {
                     Course = course,
-                    TagIdd = item,
+                    TagId = item,
                     CreatedDate = DateTime.Now
                 };
                 await _context.CourseTags.AddAsync(courseTag);
             }
-            course.Image = course.FormFile.CreateImage(_env.WebRootPath, "assets/img");
+            course.Image = course.FormFile.CreateImage(_env.WebRootPath, "assets/img");//yoxla bdenede
             course.CreatedDate = DateTime.Now;
             await _context.AddAsync(course);
             await _context.SaveChangesAsync();
@@ -113,7 +113,7 @@ namespace EduHome.App.areas.Admin.Controllers
            .Include(x => x.courseCategories).ThenInclude(x => x.Category)
            .Include(x => x.courseTags).ThenInclude(x => x.Tag)
            .Include(x => x.CLanguage)
-           .Include(x => x.courseAssets)
+           .Include(x => x.CAssets)
            .FirstOrDefaultAsync();
 
             if (course == null)
@@ -131,7 +131,7 @@ namespace EduHome.App.areas.Admin.Controllers
                              .Include(x => x.courseCategories).ThenInclude(x => x.Category)
                              .Include(x => x.courseTags).ThenInclude(x => x.Tag)
                              .Include(x => x.CLanguage)
-                             .Include(x => x.courseAssets)
+                             .Include(x => x.CAssets)
                              .FirstOrDefaultAsync();
 
             if (course is null)
@@ -178,17 +178,17 @@ namespace EduHome.App.areas.Admin.Controllers
                     });
                 }
                 List<CourseTag> RmvTag = await _context.CourseTags.
-                 Where(x => !course.TagIds.Contains(x.TagIdd)).ToListAsync();
+                 Where(x => !course.TagIds.Contains(x.TagId)).ToListAsync();
                 _context.CourseTags.RemoveRange(RmvTag);
 
                 foreach (var item in course.TagIds)
                 {
-                    if (_context.CourseTags.Where(x => x.CourseId == id && x.TagIdd == item).Count() > 0)
+                    if (_context.CourseTags.Where(x => x.CourseId == id && x.TagId == item).Count() > 0)
                         continue;
 
                     await _context.CourseTags.AddAsync(new CourseTag
                     {
-                        TagIdd = item,
+                        TagId = item,
                         CourseId = id
                     });
                 }
@@ -202,7 +202,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 uptcourse.StartDate = course.StartDate;
                 uptcourse.EndDate = course.EndDate;
                 uptcourse.CourseLanguageId = course.CourseLanguageId;
-                uptcourse.CourseAssetsId = course.CourseAssetsId;
+                uptcourse.CAssetsId = course.CAssetsId;
                 _context.Courses.Update(course);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

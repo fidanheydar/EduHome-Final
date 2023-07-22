@@ -78,7 +78,7 @@
 			<select multiple asp-for="TagIds" class="form-select" aria-label="Default select example">
 				@foreach (var item in ViewBag.Tags)
 				{
-					if (Model.courseTags.Any(x => x.TagIdd == item.Id))
+					if (Model.courseTags.Any(x => x.TagId == item.Id))
 					{
 						<option selected value="@item.Id">@item.Name</option>
 					}

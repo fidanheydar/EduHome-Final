@@ -36,8 +36,8 @@ namespace EduHome.Core.Entities
         [Required]
         public double CourseFee { get; set; }
         [Required]
-        public int CourseAssetsId { get; set; }
-        public CAssets? courseAssets { get; set; }
+        public int CAssetsId { get; set; }
+        public CAssets? CAssets { get; set; }
         public CLanguage? CLanguage { get; set; }
         public List<CourseTag>? courseTags { get; set; }
         public List<CourseCategory>? courseCategories { get; set; }

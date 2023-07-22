@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Course>
 <div class="container">
-    <table class="table table-sm">
+    <table class="table table-lg">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Image</th>
-                <th scope="col">StartDate</th>
-                <th scope="col">Language</th>
+                <th scope="col">Starting Date</th>
+                <th scope="col">Ending Date</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
             </tr>
@@ -18,9 +18,10 @@
                 <tr>
                     <th scope="row">@item.Id</th>
                     <th>@item.Name</th>
-                    <th><img style="width:100px;height:100px" src="~/img/course/@item.Image" /></th>
+                    <th><img style="width:100px;height:100px" src="~/assets/img/@item.Image" /></th>
                     <th>@item.StartDate.Day/@item.StartDate.Month/@item.StartDate.Year</th>
-                    <th>@item.CLanguage.Name</th>
+                    <th>@item.EndDate.Day/@item.EndDate.Month/@item.EndDate.Year</th>
+
                     <td>
                         <a asp-controller="course" asp-action="update" asp-route-id="@item.Id">
                             <i class="fas fa-edit text text-primary"></i>

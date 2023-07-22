@@ -33,7 +33,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.Hobb = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Hobby = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
             return View();
         }
         [HttpPost]
@@ -43,10 +43,10 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.Hobby= await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
             if (teacher.FormFile == null)
             {
                 ModelState.AddModelError("FormFile", "The field image is required");

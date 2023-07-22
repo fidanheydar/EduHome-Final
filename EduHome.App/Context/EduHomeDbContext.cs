@@ -1,9 +1,11 @@
 ﻿using EduHome.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace EduHome.App.Context
 {
-    public class EduHomeDbContext:DbContext
+    public class EduHomeDbContext:IdentityDbContext<AppUser>
     {
         public DbSet<Slider> Slides { get; set; }
         public DbSet<Notice> Notices { get; set; }
@@ -30,6 +32,30 @@ namespace EduHome.App.Context
         {
             
         }
-    
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Course>()
+        //      .HasOne(a => a.CAssets)
+        //      .WithOne(b => b.Course)
+        //      .HasForeignKey<CAssets>(b => b.CAssetsId)
+        //      .IsRequired();
+
+        //    base.OnModelCreating(modelBuilder);
+
+        //}
+
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Teacher>()
+        //  .HasMany(e => e.TeacherPosition)
+        //  .WithOne(e => e.Teacher)
+        //  .HasForeignKey( e => e.PositionId)
+        //  .IsRequired();
+        //    base.OnModelCreating(modelBuilder);
+
+
+        //}
     }
 }
