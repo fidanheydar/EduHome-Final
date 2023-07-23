@@ -91,14 +91,14 @@
 			<span asp-validation-for="TagIds" class="text text-danger"></span>
 		</div>
 		<div class="form-group">
-			<label asp-for="CourseLanguageId">Language</label>
-			<select asp-for="CourseLanguageId" class="form-select" aria-label="Default select example">
+			<label asp-for="CLanguageId">Language</label>
+			<select asp-for="CLanguageId" class="form-select" aria-label="Default select example">
 				<option value="0">Choose one of them</option>
 				@foreach (var item in ViewBag.Languages)
 				{
-					if (Model.CourseLanguageId != null)
+					if (Model.CLanguageId != null)
 					{
-						if (Model.CourseLanguageId == item.Id)
+						if (Model.CLanguageId == item.Id)
 						{
 							<option selected value="@item.Id">@item.Name</option>
 							continue;
@@ -107,7 +107,7 @@
 					<option value="@item.Id">@item.Name</option>
 				}
 			</select>
-			<span asp-validation-for="CourseLanguageId" class="text text-danger"></span>
+			<span asp-validation-for="CLanguageId" class="text text-danger"></span>
 		</div>
 		@*<div class="form-group">
 			<label asp-for="CourseAssetsId">Assests</label>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EduHome.Core.Entities
 {
-    public class TeacherSocial:BaseModel
+    public class Networks:BaseModel
     {
         [Required]
         public string ? Link { get; set; }
@@ -17,5 +17,6 @@ namespace EduHome.Core.Entities
         public int ? TeacherId { get; set; }
         [Required]
         public Teacher ? Teacher { get; set; }
+        //senin teaceherin temiz sehvdi butun mentiqler sehv qurulub many-to-many relationu yazilib amma geri qalani one-to-many-di
     }
 }

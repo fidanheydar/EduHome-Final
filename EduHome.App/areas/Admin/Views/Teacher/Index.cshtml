@@ -17,12 +17,11 @@
             @foreach (var item in Model)
             {
                 <tr>
-                     <th scope="row">@item.Id</th>
-                     <th>@item.FullName</th>
-                     <th>@item.TeacherPosition.Name</th>
-                     <th>@item.TeacherDegree.Name</th>
-                     <th><img style="width:100px;height:100px" src="~/img/teacher/@item.Image" /></th>
-                    <th><img style="width:70px;height:70px;object-fit:cover;" src="~/img/slider/@item.Image" /></th>
+                     <th scope="row">@item.Id</th> 
+                     <th>@item.Fullname</th>
+                     <th>@item.Speciality</th>
+                     <th>@item.Degree</th>
+                     <th><img style="width:100px;height:100px" src="~/assets/img/@item.Image" /></th>
                     <td><a asp-controller="teacher" asp-action="update" asp-route-id="@item.Id"><i class="fas fa-edit text text-primary"></i></a></td>
                     <td><a onclick="if (!confirm('Delete selected item?')){return false;}" asp-controller="teacher" asp-action="Delete" asp-route-id="@item.Id" class=" delete-item"><i class="fas fa-trash text text-danger"></i></a></td>
                 </tr>

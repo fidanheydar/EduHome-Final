@@ -9,7 +9,7 @@ namespace EduHome.Core.Entities
 {
     public  class CourseTag : BaseModel
     {
-        public int TagId { get; set; } //language one-to-many/di?? bilmremm         dsffsdfsdfsd
+        public int TagId { get; set; }
 
         public Tag? Tag { get; set; }
         public int CourseId { get; set; }

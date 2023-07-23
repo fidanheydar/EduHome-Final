@@ -12,11 +12,8 @@ namespace EduHome.App.Context
         public DbSet<WelcomeEdu> WelcomeEdus { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<TeacherDegree> TeacherDegrees { get; set; }
         public DbSet<TeacherHobby> TeacherHobbies { get; set; }
-        public DbSet<TeacherPosition> TeacherPositions { get; set; }
-        public DbSet<TeacherSkill> TeacherSkills { get; set; }
-        public DbSet<TeacherSocial> TeacherSocials { get; set; }
+        public DbSet<Networks> networks { get; set; }
         public DbSet<Hobby> Hobbies { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Course> Courses { get; set; }

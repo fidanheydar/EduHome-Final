@@ -28,9 +28,10 @@ namespace EduHome.Core.Entities
         [Required]
         public double ClassDuration { get; set; }
         [Required]
-        public string SkillLevel { get; set; }
+        public string SkillLevel { get; set; }//assets hansidi? neee
         [Required]
-        public int CourseLanguageId { get; set; }
+        public int CLanguageId { get; set; }
+        public CLanguage? CLanguage { get; set; }
         [Required]
         public int StudentCount { get; set; }
         [Required]
@@ -38,15 +39,14 @@ namespace EduHome.Core.Entities
         [Required]
         public int CAssetsId { get; set; }
         public CAssets? CAssets { get; set; }
-        public CLanguage? CLanguage { get; set; }
         public List<CourseTag>? courseTags { get; set; }
+        [NotMapped]
+        public List<int> TagIds { get; set; }
         public List<CourseCategory>? courseCategories { get; set; }
         [NotMapped]
         public List<int> CategoryIds { get; set; }
-        [NotMapped]
-        public List<int> TagIds { get; set; }
         public string? Image { get; set; }
         [NotMapped]
-        public IFormFile? FormFile { get; set; }
+        public IFormFile? FormFile { get; set; }//course durationun hani senin
     }
 }

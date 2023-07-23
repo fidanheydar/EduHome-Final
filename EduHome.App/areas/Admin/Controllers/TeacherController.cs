@@ -1,169 +1,135 @@
 ﻿using EduHome.App.Context;
 using EduHome.App.Extensions;
-using EduHome.App.Helpers;
 using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
     [Area("Admin")]
     public class TeacherController : Controller
     {
-        private readonly EduHomeDbContext _dbContext;
+        private readonly EduHomeDbContext _context;
+
         private readonly IWebHostEnvironment _env;
-
-
-        public TeacherController(EduHomeDbContext dbContext, IWebHostEnvironment env)
+        public TeacherController(EduHomeDbContext context, IWebHostEnvironment env)
         {
-            _dbContext = dbContext;
+            _context = context;
             _env = env;
         }
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Teacher> teachers = await _dbContext.Teachers
-                .Where(x => !x.IsDeleted)
-                .Include(x => x.TeacherPosition)
-                .Include(x => x.TeacherDegree).ToListAsync();
+            ViewBag.Networks = _context.networks.ToList();
+            ViewBag.Hobbies = _context.Hobbies.ToList();
+            var teachers = await _context.Teachers.Where(x => !x.IsDeleted).
+                Include(x => x.TeacherHobbies).
+                ToListAsync();
             return View(teachers);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.Hobby = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Networks = _context.networks.Where(x => !x.IsDeleted).ToList();
+            ViewBag.Hobbies = _context.Hobbies.Where(x => !x.IsDeleted).ToList();
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Teacher teacher)
+        public async Task<IActionResult> Create(Teacher teacher, IFormFile file)
         {
-            ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.Hobby= await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
-            if (teacher.FormFile == null)
+            teacher.FormFile = file;
+            ViewBag.Networks = _context.networks.Where(x => !x.IsDeleted).ToList();
+            ViewBag.Hobbies = _context.Hobbies.Where(x => !x.IsDeleted).ToList();
+
+
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("FormFile", "The field image is required");
-                return View();
+                return View(teacher);
             }
-            if (!Helper.IsImage(teacher.FormFile))
+
+
+            if (!teacher.FormFile.ContentType.Contains("image"))//yanlish extention ile file daxil edilmesinin qarshisinin alinmasi uchun
             {
-                ModelState.AddModelError("FormFile", "File type is not correct !");
-                return View();
+                ModelState.AddModelError("FormFile", "Duzgun daxil etmemisiniz"); //error mesaji qaytarmaq uchun
             }
-            if (!Helper.IsSizeOk(teacher.FormFile, 1))
-            {
-                ModelState.AddModelError("FormFile", "File size can not be over 1 mb!");
-                return View();
-            }
+
+
+            teacher.Image = teacher.FormFile.CreateImage(_env.WebRootPath, "assets/img/");
+
             foreach (var item in teacher.HobbyIds)
             {
-                if (!await _dbContext.Hobbies.AnyAsync(x => x.Id == item))
+                if (!await _context.Hobbies.AnyAsync(x => x.Id == item))
                 {
-                    ModelState.AddModelError("", "Invalid Hobby Id");
+                    ModelState.AddModelError("", "-----");
                     return View(teacher);
                 }
-                TeacherHobby teacherHobby = new TeacherHobby
+                TeacherHobby teacherHobbies = new TeacherHobby
                 {
-                    CreatedDate = DateTime.Now,
-                    Teacher = teacher,
                     HobbyId = item,
+                    Teacher = teacher,
+                    CreatedDate = DateTime.Now
                 };
-                await _dbContext.TeacherHobbies.AddAsync(teacherHobby);
+                await _context.TeacherHobbies.AddAsync(teacherHobbies);
+
             }
-            teacher.Image = teacher.FormFile.CreateImage(_env.WebRootPath, "assets/img");
+
             teacher.CreatedDate = DateTime.Now;
-            await _dbContext.AddAsync(teacher);
-            await _dbContext.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            await _context.Teachers.AddAsync(teacher);
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction("index", "teacher");
         }
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.Hobby = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
-            Teacher? teacher = await _dbContext.Teachers
-               .Where(x => !x.IsDeleted && x.Id == id)
-                .Include(x => x.TeacherDegree)
-                .Include(x => x.TeacherPosition)
-                    .Include(x => x.TeacherHobbies)
-                    .ThenInclude(x => x.Hobby)
+            Teacher? teacher  = await _context.Teachers
+                .Where(x => !x.IsDeleted && x.Id == id)
                 .FirstOrDefaultAsync();
             if (teacher == null)
-            {
-                return NotFound();
-            }
+                return NotFound();//teacher degreee niyeee eeee nebilimee vayrdi
             return View(teacher);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, Teacher teacher)
         {
-            ViewBag.TeacherPosition = await _dbContext.TeacherPositions.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.TeacherDegree = await _dbContext.TeacherDegrees.Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.Hobby = await _dbContext.Hobbies.Where(x => !x.IsDeleted).ToListAsync();
-
-
-        Teacher? updatedTeacher = await _dbContext.Teachers
-                .Where(x => !x.IsDeleted && x.Id == id)
-                .Include(x => x.TeacherDegree)
-                .Include(x => x.TeacherPosition)
-                .Include(x => x.TeacherHobbies)
-                    .ThenInclude(x => x.Hobby)
-                .FirstOrDefaultAsync();
-
-            if (teacher == null)
-            {
-                return NotFound();
-            }
             if (!ModelState.IsValid)
             {
-                return View(updatedTeacher);
-            }
-            if (teacher.FormFile == null)
-            {
-                ModelState.AddModelError("FormFile", "The field image is required");
                 return View();
             }
-            if (!Helper.IsImage(teacher.FormFile))
-            {
-                ModelState.AddModelError("FormFile", "File type is not correct !");
-                return View();
-            }
-            if (!Helper.IsSizeOk(teacher.FormFile, 1))
-            {
-                ModelState.AddModelError("FormFile", "File size can not be over 1 mb!");
-                return View();
-            }
-            updatedTeacher.Image = teacher.FormFile
-                    .CreateImage(_env.WebRootPath, "assets/img");
-            teacher.UpdatedDate =DateTime.Now;
-            _dbContext.Update(teacher);
-            await _dbContext.SaveChangesAsync();
+            Teacher? exteacher = await _context.Teachers
+            .Where(x => !x.IsDeleted && x.Id == id)
+            .FirstOrDefaultAsync();
+            if (teacher == null)
+                return NotFound();
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.About = teacher.About;//bunnari ozun duzeldersen
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.Fullname = teacher.Fullname;
+            exteacher.Fullname = teacher.Fullname;
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            Teacher? teacher = await _dbContext.Teachers
-                .Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
-            if (teacher == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return View();
             }
+            Teacher? teacher = await _context.Teachers
+                    .Where(x => !x.IsDeleted && x.Id == id)
+                     .FirstOrDefaultAsync();
+            if (teacher == null)
+                return NotFound();
             teacher.IsDeleted = true;
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
     }
 }
-   
-
-

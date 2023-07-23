@@ -1,4 +1,6 @@
-﻿<div class="banner-area-wrapper">
+﻿@using EduHome.App.ViewModels;
+@model LoginViewModel
+<div class="banner-area-wrapper">
     <div class="banner-area text-center">
         <div class="container">
             <div class="row">
@@ -26,9 +28,12 @@
                             <span>Please login using account detail bellow.</span>
                         </div>
                         <div class="login-form">
-                            <form action="#" method="post">
-                                <input type="text" name="user-name" placeholder="Username">
-                                <input type="password" name="user-password" placeholder="Password">
+                            <form method="post">
+                                <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <span class="text text-danger" asp-validation-for="Username"></span>
+                                <input asp-for="Username" placeholder="Username">
+                                <span class="text text-danger" asp-validation-for="Password"></span>
+                                <input type="password" asp-for="Password" placeholder="Password">
                                 <div class="button-box">
                                     <div class="login-toggle-btn">
                                         <input type="checkbox" id="remember">

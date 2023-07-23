@@ -201,7 +201,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 uptcourse.SkillLevel = course.SkillLevel;
                 uptcourse.StartDate = course.StartDate;
                 uptcourse.EndDate = course.EndDate;
-                uptcourse.CourseLanguageId = course.CourseLanguageId;
+                uptcourse.CLanguageId = course.CLanguageId;
                 uptcourse.CAssetsId = course.CAssetsId;
                 _context.Courses.Update(course);
                 await _context.SaveChangesAsync();

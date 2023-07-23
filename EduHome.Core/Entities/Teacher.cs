@@ -11,33 +11,65 @@ namespace EduHome.Core.Entities
 {
     public class Teacher : BaseModel
     {
+
+        [StringLength(maximumLength: 50)]
         [Required]
-        public string? FullName { get; set; }
-        [Required]
-        public string? Mail { get; set; }
+        public string? Fullname { get; set; }
+
+        [StringLength(maximumLength: 600)]
         [Required]
         public string? About { get; set; }
         [Required]
-        public int? ExperienceYear { get; set; }
+
+        [StringLength(maximumLength: 50)]
+
+        public string? Degree { get; set; }
+
+        [StringLength(maximumLength: 50)]
         [Required]
-        public string? PhoneNumber { get; set; }
+
+
+        public string? Experience { get; set; }
+
+        [StringLength(maximumLength: 70)]
+        [DataType(DataType.EmailAddress)]
         [Required]
+
+        public string? Email { get; set; }
+
+        [StringLength(maximumLength: 50)]
+        [Required]
+
+        public string? Phone { get; set; }
+
+        [StringLength(maximumLength: 50)]
+
+        public string? Skype { get; set; }
+
+        [StringLength(maximumLength: 75)]
+        [Required]
+
         public string? Faculty { get; set; }
+
+
+        [StringLength(maximumLength: 70)]
         [Required]
-        public string? Image { get; set; }
+        public string? Speciality { get; set; }
+
+        [StringLength(maximumLength: 120)]
+
+
         [NotMapped]
         public IFormFile? FormFile { get; set; }
-        [Required]
-        public int? TeacherPositionId { get; set; }
-        [Required]
-        public TeacherPosition?  TeacherPosition { get; set; }//teacher positioin 
-        public int? TeacherDegreeId { get; set; }//adlari eyni olmalidiki qurulsun relation
-        public TeacherDegree ? TeacherDegree { get; set; }
-        public List<TeacherSkill> ? TeacherSkills { get; set; }
-        public List <TeacherSocial> ?TeacherSocials { get; set; }
+
+
+        public string? Image { get; set; }
         public List<TeacherHobby>? TeacherHobbies { get; set; }
+
         [NotMapped]
+        //[Required]
         public List<int>? HobbyIds { get; set; }
+        public List<Networks>? Networks { get; set; }
 
     }
 
