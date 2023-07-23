@@ -22,6 +22,8 @@ namespace EduHome.App.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
-        //bu nedi a baalaaaaaa neeee
+        [Required]
+        public bool Terms { get; set; }
+        
     }
 }

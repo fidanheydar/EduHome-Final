@@ -28,10 +28,10 @@ namespace EduHome.Core.Entities
         [NotMapped]
         public IFormFile? FormFile { get; set; }
         [Required]
-        public int? PositionId { get; set; }
+        public int? TeacherPositionId { get; set; }
         [Required]
-        public TeacherPosition?  TeacherPosition { get; set; }
-        public int? DegreeId { get; set; }
+        public TeacherPosition?  TeacherPosition { get; set; }//teacher positioin 
+        public int? TeacherDegreeId { get; set; }//adlari eyni olmalidiki qurulsun relation
         public TeacherDegree ? TeacherDegree { get; set; }
         public List<TeacherSkill> ? TeacherSkills { get; set; }
         public List <TeacherSocial> ?TeacherSocials { get; set; }
